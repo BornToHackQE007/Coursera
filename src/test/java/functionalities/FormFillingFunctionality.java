@@ -9,8 +9,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 //import org.testng.annotations.DataProvider;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import utilities.*;
 
@@ -28,11 +30,11 @@ public class FormFillingFunctionality extends BaseUi {
 		if (dropDown) {
 
 			driver.findElement(By.xpath(config.getProperty("enterpriseLink"))).click();
-			pageLoad(40);
- 			//waitElementClickable(config.getProperty("productLink"));
-			//WebElement productlink = driver.findElement(By.xpath(config.getProperty("productLink")));
-			WebElement productlink=driver.findElement(By.linkText("Product"));
-			snap("Product");
+			pageLoad(20);
+            WebDriverWait wait = new WebDriverWait(driver, 20);
+            wait.until(ExpectedConditions.elementToBeClickable(By.linkText("Product")));
+            WebElement productlink = driver.findElement(By.linkText("Product"));
+            snap("Product");
 			Actions action = new Actions(driver);
 			action.moveToElement(productlink).build().perform();
 			WebElement forcampuslink = driver.findElement(By.xpath(config.getProperty("campusLink")));
@@ -112,6 +114,6 @@ public class FormFillingFunctionality extends BaseUi {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		snap("Data "+row+" Status");
+		//snap("Data "+row+" Status");
 	}
 }

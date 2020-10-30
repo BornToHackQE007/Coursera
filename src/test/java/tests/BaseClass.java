@@ -1,8 +1,8 @@
 package tests;
 
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeSuite;
 import utilities.BaseUi;
 
 public class BaseClass extends BaseUi{
@@ -10,7 +10,7 @@ public class BaseClass extends BaseUi{
 	
 	public static WebDriver driver;
 	
-	@BeforeClass
+	@BeforeSuite
 	public void openWebsite()
 	{
 		driver = getDriver("Firefox");
@@ -19,7 +19,7 @@ public class BaseClass extends BaseUi{
 	
 	
 	
-	@AfterClass
+	@AfterSuite
 	public void exitBrowser()
 	{
 		quitBrowser();
