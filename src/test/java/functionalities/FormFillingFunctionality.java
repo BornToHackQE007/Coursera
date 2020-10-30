@@ -28,12 +28,13 @@ public class FormFillingFunctionality extends BaseUi {
 		if (dropDown) {
 
 			driver.findElement(By.xpath(config.getProperty("enterpriseLink"))).click();
-			pageLoad(30);
+			pageLoad(40);
  			//waitElementClickable(config.getProperty("productLink"));
-			WebElement produtclink = driver.findElement(By.xpath(config.getProperty("productLink")));
+			//WebElement productlink = driver.findElement(By.xpath(config.getProperty("productLink")));
+			WebElement productlink=driver.findElement(By.linkText("Product"));
 			snap("Product");
 			Actions action = new Actions(driver);
-			action.moveToElement(produtclink).build().perform();
+			action.moveToElement(productlink).build().perform();
 			WebElement forcampuslink = driver.findElement(By.xpath(config.getProperty("campusLink")));
 			snap("Product dropdown");
 			forcampuslink.click();
