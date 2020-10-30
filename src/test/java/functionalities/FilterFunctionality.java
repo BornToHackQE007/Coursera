@@ -49,7 +49,7 @@ public class FilterFunctionality extends BaseUi {
  
 
         // Convert list to map, to store in excel file
-        languageMap = converToMap.convert(languages, langCounts);
+        languageMap = ConvertToMap.convert(languages, langCounts);
         try {
 
  
@@ -85,7 +85,7 @@ public class FilterFunctionality extends BaseUi {
         List<WebElement> levelsCount = driver.findElements(By.xpath(config.getProperty("levelListCount")));
         LinkedHashMap<String, String> lMap = new LinkedHashMap<String, String>();
         System.out.println("Levels and their course count");
-        lMap = converToMap.convert(levels, levelsCount);
+        lMap = ConvertToMap.convert(levels, levelsCount);
         try {
             SendToExcel.sendData(lMap, "Level", "LEVEL NAME", "INDIVIDUAL LEVEL COURSES");
         } catch (IOException e) {

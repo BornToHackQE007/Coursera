@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 
 import org.openqa.selenium.WebElement;
 
-public class converToMap {
+public class ConvertToMap {
 	public static int total;
 	
 	/*
