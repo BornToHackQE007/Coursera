@@ -6,18 +6,13 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
-
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.firefox.FirefoxBinary;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.FirefoxOptions;
-import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.opera.OperaDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -60,29 +55,15 @@ public class BaseUi {
 		// If browser entered is chrome, open chrome browser
 		if (browser.equalsIgnoreCase("chrome")) {
 			System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/drivers/chromedriver.exe");
-			ChromeOptions options = new ChromeOptions();
-			options.addArguments("--no-sandbox");
-			options.addArguments("--headless"); // should be enabled for Jenkins
-			options.addArguments("--disable-dev-shm-usage"); // should be enabled for Jenkins
-			options.addArguments("--window-size=1920x1080"); // should be enabled for Jenkins
-			driver = new ChromeDriver(options);
-
-			// driver = new ChromeDriver();
+			driver = new ChromeDriver();
 		}
 
 		// If browser entered is firefox, open firefox browser
 		else if (browser.equalsIgnoreCase("firefox")) {
 			System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir") + "/drivers/geckodriver.exe");
-			// FirefoxOptions options = new FirefoxOptions();
-			// options.addArguments("-headless");
-			FirefoxBinary firefoxBinary = new FirefoxBinary();
-			firefoxBinary.addCommandLineOptions("--headless");
-			FirefoxProfile profile = new FirefoxProfile();
-
-			FirefoxOptions firefoxOptions = new FirefoxOptions();
-			firefoxOptions.setBinary(firefoxBinary);
-			firefoxOptions.setProfile(profile);
-			driver = new FirefoxDriver(firefoxOptions);
+			System.setProperty(FirefoxDriver.SystemProperty.DRIVER_USE_MARIONETTE,"true");
+			System.setProperty(FirefoxDriver.SystemProperty.BROWSER_LOGFILE,"/dev/null");
+			 driver=new FirefoxDriver();
 
 			// driver = new FirefoxDriver(options);
 		} else if (browser.equalsIgnoreCase("opera")) {
