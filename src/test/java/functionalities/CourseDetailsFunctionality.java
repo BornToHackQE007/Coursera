@@ -23,7 +23,7 @@ public class CourseDetailsFunctionality extends BaseUi{
 	 */
 	public void search(String testData) {
     	
-		waitElementClickable(config.getProperty("search"));
+		waitElementClickable(config.getProperty("sear-ch"));
 		driver.findElement(By.xpath(config.getProperty("search"))).clear();
 		driver.findElement(By.xpath(config.getProperty("search"))).sendKeys(testData);
 		snap("Search");
