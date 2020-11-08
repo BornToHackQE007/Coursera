@@ -22,9 +22,9 @@ public class CourseDetailsFunctionality extends BaseUi{
 	 * Working with Search Bar
 	 */
 	public void search(String testData) {
-    	
+    		openUrl();
 		waitElementClickable(config.getProperty("search"));
-		driver.findElement(By.xpath(config.getProperty("search"))).clear();
+		//driver.findElement(By.xpath(config.getProperty("search"))).clear();
 		driver.findElement(By.xpath(config.getProperty("search"))).sendKeys(testData);
 		snap("Search");
 	}
